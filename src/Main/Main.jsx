@@ -8,7 +8,9 @@ export default function Main(){
         <div className='main'>
             <MainBlock />
             <Instructions />
+
             
+
         </div>
     )
 }
