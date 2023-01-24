@@ -1,0 +1,30 @@
+.cards_block {
+    display: flex;
+    justify-content: center;
+    width: 85vw;
+    height: 80vh;
+    // background-color: darkslategrey;
+    // overflow: auto;
+
+    .cards_block_div {
+        display: flex;
+        justify-content: center;
+        width: 85vw;
+        background-color: dimgrey;
+        overflow: auto;
+
+        .cards_block {
+            display: flex;
+            flex-wrap: wrap;
+            width: 60vw;
+            // background-color: rgb(54, 7, 7);
+
+            .cards_div {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 50vw;
+            }
+        }
+    }
+}

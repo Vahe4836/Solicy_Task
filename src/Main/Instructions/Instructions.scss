@@ -1,0 +1,25 @@
+.instructions {
+    width: calc(15vw - 1px);
+    height: 100vh;
+    background-color: darkgreen;
+    border-left: 1px black solid ;
+
+    .instructions_div {
+        padding: 0px 8px 0px 8px;
+        height: 100vh;
+
+        .instructions_elements {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+            .span_text {
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+    }
+}

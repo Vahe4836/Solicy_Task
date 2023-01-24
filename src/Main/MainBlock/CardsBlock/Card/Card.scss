@@ -1,0 +1,26 @@
+.card {
+    width: 20vw;
+    height: calc(20vh + 23px);
+    border: 1px rgb(39, 5, 5) solid;
+    margin: 8px;
+    background-color: rgb(16, 70, 70);
+
+    .button_delete_div {
+        display: flex;
+        justify-content: end;
+
+        .button_delete {
+            width: 23px;
+            height: 23px;
+            cursor: pointer;
+        }
+    }
+
+    .random_num {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(20vh - 23px);
+        font-size: 30px;
+    }
+}
