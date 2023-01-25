@@ -2,7 +2,7 @@ import Card from './Card/Card';
 import './CardsBlock.scss';
 
 
-export default function CardsBlock({storedCards, onDelete}) {
+export default function CardsBlock({cards, onDelete}) {
 
     // const sortArrayOfObject = (arr) => {
     
@@ -18,7 +18,7 @@ export default function CardsBlock({storedCards, onDelete}) {
             <div className='cards_block_div'>
                 <div className='cards_block'>
                     <div className='cards_div'>
-                        {storedCards.map((card) => {
+                        {cards.map((card) => {
                             return(
                                 <>
                                     <Card 

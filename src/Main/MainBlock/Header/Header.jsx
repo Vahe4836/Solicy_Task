@@ -3,12 +3,11 @@ import './Header.scss';
 
 
 
-export default function Header({ storedCards,onAdd,sortArrayOfObject }) {
+export default function Header({ cards,onAdd,sortArrayOfObject }) {
 
     const [random_num,setRandom_num] = useState(Math.ceil(Math.random() * 10));
-    // setRandom_num(Math.ceil(Math.random() * 1000));
 
-    console.log("prevent", storedCards);
+    console.log("prevent",cards);
 
     return (
         <div className="header">
@@ -30,8 +29,8 @@ export default function Header({ storedCards,onAdd,sortArrayOfObject }) {
                     className='header_button'
                     onClick={(evt) => {
                         evt.preventDefault();
-                        sortArrayOfObject(storedCards);
-                        console.log("current", storedCards);
+                        sortArrayOfObject(cards);
+                        console.log("current",cards);
                     }}
                 >
                     Sort cards

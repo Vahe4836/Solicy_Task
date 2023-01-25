@@ -23,28 +23,16 @@ function reducer(state,action) {
 
 export default function MainBlock() {
 
-    // const storedCards = JSON.parse(localStorage.getItem("cards"));
-
     let storedCards = JSON.parse(localStorage.getItem("cards"));
 
-    if(storedCards !== null && storedCards.length !== 0){
-        storedCards = JSON.parse(localStorage.getItem("cards"));
-    }else{
+    if(storedCards === null || storedCards === undefined){
         storedCards = [];
     }
 
-    // storedCards = JSON.parse(localStorage.getItem("cards"));
+    const [cards, dispatch] = useReducer(reducer, storedCards);
 
-    const [cards,dispatch] = useReducer(reducer, storedCards);
+    localStorage.setItem("cards", JSON.stringify(cards));
 
-    localStorage.setItem("cards",JSON.stringify(cards));
-
-    // const sortArrayOfObject = (arr) => {
-
-    //     console.log("sort");
-    //     return arr.sort((a,b) => (a.random_num > b.random_num) ? 1 : -1);
-
-    // }
 
     function sortArrayOfObject(arr) {
         console.log("sort");
@@ -55,8 +43,7 @@ export default function MainBlock() {
         <div className="main_block">
 
             <Header
-                // cards={cards}
-                storedCards={storedCards}
+                cards={cards}
 
                 sortArrayOfObject={sortArrayOfObject}
 
@@ -72,9 +59,7 @@ export default function MainBlock() {
             />
 
             <CardsBlock
-                // cards={cards}
-
-                storedCards={storedCards}
+                cards={cards}
 
                 // onChange={(newTodo) => {
                 //     dispatch({
