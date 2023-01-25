@@ -25,9 +25,15 @@ export default function MainBlock() {
 
     // const storedCards = JSON.parse(localStorage.getItem("cards"));
 
-    // let storedCards = [];
-
     let storedCards = JSON.parse(localStorage.getItem("cards"));
+
+    if(storedCards !== null && storedCards.length !== 0){
+        storedCards = JSON.parse(localStorage.getItem("cards"));
+    }else{
+        storedCards = [];
+    }
+
+    // storedCards = JSON.parse(localStorage.getItem("cards"));
 
     const [cards,dispatch] = useReducer(reducer, storedCards);
 
