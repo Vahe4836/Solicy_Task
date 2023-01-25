@@ -15,30 +15,42 @@ function reducer(state,action) {
             ...state
         ];
     } else if (action.type === "delete") {
-        return state.filter((t) => t.id !== action.payload.id);
-    } 
+        return state.filter((card) => card.id !== action.payload.id);
+    }
 }
 
 
 
-export default function MainBlock(){
+export default function MainBlock() {
 
-    const [cards, dispatch] = useReducer(reducer, [
-        {
-            id: Math.random(),
-            random_num: Math.ceil(Math.random() * 1000),
-        },
-        {
-            id: Math.random(),
-            random_num: Math.ceil(Math.random() * 1000),
-        }
-    ]);
+    const storedCards = JSON.parse(localStorage.getItem("cards"));
+
+    const [cards,dispatch] = useReducer(reducer, storedCards);
+
+    localStorage.setItem("cards",JSON.stringify(cards));
 
 
-    return(
+    // const sortArrayOfObject = (arr) => {
+
+    //     console.log("sort");
+    //     return arr.sort((a,b) => (a.random_num > b.random_num) ? 1 : -1);
+
+    // }
+
+    function sortArrayOfObject(arr) {
+        console.log("sort");
+        return arr.sort((a,b) => (a.random_num > b.random_num) ? 1 : -1);
+    }
+
+    return (
         <div className="main_block">
 
-            <Header 
+            <Header
+                // cards={cards}
+                storedCards={storedCards}
+
+                sortArrayOfObject={sortArrayOfObject}
+
                 onAdd={(random_num) => {
                     dispatch({
                         type: 'add',
@@ -47,10 +59,31 @@ export default function MainBlock(){
                         }
                     })
                 }}
+
             />
 
-            <CardsBlock 
-                cards={cards}
+            <CardsBlock
+                // cards={cards}
+
+                storedCards={storedCards}
+
+                // onChange={(newTodo) => {
+                //     dispatch({
+                //         type: "update",
+                //         payload: {
+                //             updatedTodo: newTodo
+                //         }
+                //     });
+                // }}
+
+                onDelete={(card) => {
+                    dispatch({
+                        type: "delete",
+                        payload: {
+                            id: card.id
+                        }
+                    });
+                }}
             />
 
             <Footer />
