@@ -4,9 +4,6 @@ import '../Header.scss';
 
 
 export default function SortButton({cards, onSortArrayOfObject}) {
-
-    const [filtredCards, setFiltred] = useState(0);
-
     return (
         <button
             className='header_button'
