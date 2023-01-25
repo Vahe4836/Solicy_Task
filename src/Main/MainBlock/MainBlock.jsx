@@ -23,12 +23,15 @@ function reducer(state,action) {
 
 export default function MainBlock() {
 
-    const storedCards = JSON.parse(localStorage.getItem("cards"));
+    // const storedCards = JSON.parse(localStorage.getItem("cards"));
+
+    // let storedCards = [];
+
+    let storedCards = JSON.parse(localStorage.getItem("cards"));
 
     const [cards,dispatch] = useReducer(reducer, storedCards);
 
     localStorage.setItem("cards",JSON.stringify(cards));
-
 
     // const sortArrayOfObject = (arr) => {
 
