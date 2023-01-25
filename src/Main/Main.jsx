@@ -3,6 +3,8 @@ import Instructions from './Instructions/Instructions';
 import MainBlock from './MainBlock/MainBlock';
 import './Main.scss';
 
+
+
 function reducer(state,action) {
     if (action.type === "add") {
         return [
@@ -15,7 +17,9 @@ function reducer(state,action) {
     } else if (action.type === "delete") {
         return state.filter((card) => card.id !== action.payload.id);
     } else if (action.type === "sort") {
-        return state.sort((a,b) => (a.random_num > b.random_num) ? 1 : -1);
+        return [...state.sort((a,b) => (a.random_num > b.random_num) ? 1 : -1)];
+    } else {
+        return state;
     }
 }
 
@@ -25,18 +29,14 @@ export default function Main() {
 
     let storedCards = JSON.parse(localStorage.getItem("cards"));
 
-    console.log("1", storedCards);
-
-    if (storedCards === null || storedCards === undefined) {
+    if (!storedCards) {
         storedCards = [];
     }
 
-
     const [cards,dispatch] = useReducer(reducer,storedCards);
 
-    console.log("2", storedCards);
-
     localStorage.setItem("cards",JSON.stringify(cards));
+
 
     return (
         <div className='main'>
@@ -48,11 +48,10 @@ export default function Main() {
                     dispatch({
                         type: "sort",
                         payload: {
-                            filtredCards: storedCards
+                            filtredCards: filtredCards
                         }
                     })
                 }}
-                // onSortArrayOfObject={onSortArrayOfObject}
 
                 onAdd={(random_num) => {
                     dispatch({
@@ -62,7 +61,6 @@ export default function Main() {
                         }
                     })
                 }}
-                // onAdd={onAdd}
 
                 onDelete={(card) => {
                     dispatch({
@@ -72,7 +70,6 @@ export default function Main() {
                         }
                     });
                 }}
-                // onDelete={onDelete}
 
             />
             <Instructions />

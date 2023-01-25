@@ -1,15 +1,10 @@
-// import { useState } from 'react';
 import AddButton from './AddButton/addButton';
-import './Header.scss';
 import SortButton from './SortButton/sortButton';
+import './Header.scss';
 
 
 
-export default function Header({ cards,storedCards, onSortArrayOfObject,onAdd }) {
-
-    // const [random_num,setRandom_num] = useState(Math.ceil(Math.random() * 10));
-
-    // console.log("prevent",cards);
+export default function Header({ onSortArrayOfObject,onAdd }) {
 
     return (
         <div className="header">
@@ -20,8 +15,6 @@ export default function Header({ cards,storedCards, onSortArrayOfObject,onAdd })
                 />
 
                 <SortButton
-                    cards={cards}
-                    storedCards={storedCards}
                     onSortArrayOfObject={onSortArrayOfObject}
                 />
 

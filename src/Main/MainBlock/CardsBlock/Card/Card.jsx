@@ -3,6 +3,7 @@ import './Card.scss';
 
 
 export default function Card({ card,random_num,onDelete }) {
+
     return (
         <div className="card">
             <div className='button_delete_div'>
