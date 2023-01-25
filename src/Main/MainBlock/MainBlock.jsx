@@ -4,7 +4,7 @@ import Header from "./Header/Header";
 
 
 
-export default function MainBlock({cards, storedCards, onSortArrayOfObject, onAdd, onDelete}) {
+export default function MainBlock({cards, onSortArrayOfObject, onAdd, onDelete}) {
     return (
         <div className="main_block">
 
